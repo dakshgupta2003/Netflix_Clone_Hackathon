@@ -185,24 +185,51 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Scroll-based navbar visibility
-    const navbar = document.querySelector('.upperNavbarSection');
+    // Scroll-based navbar visibility and transparency
+    const upperNavbar = document.querySelector('.upperNavbarSection');
+    const menuList = document.querySelector('.menuList');
 
     // Add the visible class by default (when page loads)
-    navbar.classList.add('navbar-visible');
+    upperNavbar.classList.add('navbar-visible');
 
     window.addEventListener('scroll', function() {
         const scrollPosition = window.scrollY;
+        const scrollThreshold = 10;
+        const transparencyThreshold = 100;
+        const maxTransparency = 500;
         
-        // Show navbar only when at the top of the page
-        if (scrollPosition <= 10) {
+        // Show upper navbar only when at the top of the page
+        if (scrollPosition <= scrollThreshold) {
             // At the top - show navbar
-            navbar.classList.remove('navbar-hidden');
-            navbar.classList.add('navbar-visible');
+            upperNavbar.classList.remove('navbar-hidden');
+            upperNavbar.classList.add('navbar-visible');
         } else {
             // Not at the top - hide navbar
-            navbar.classList.remove('navbar-visible');
-            navbar.classList.add('navbar-hidden');
+            upperNavbar.classList.remove('navbar-visible');
+            upperNavbar.classList.add('navbar-hidden');
+        }
+        
+        // Handle navbar transparency based on scroll position
+        if (menuList) {
+            if (scrollPosition <= transparencyThreshold) {
+                // At the top - fully opaque
+                menuList.classList.remove('navbar-transparent');
+                menuList.style.opacity = 1;
+            } else if (scrollPosition > maxTransparency) {
+                // Past threshold - minimum opacity
+                menuList.classList.add('navbar-transparent');
+                menuList.style.opacity = 0.7;
+            } else {
+                // In between - gradual transparency
+                const opacityRatio = 1 - ((scrollPosition - transparencyThreshold) / (maxTransparency - transparencyThreshold)) * 0.3;
+                menuList.style.opacity = opacityRatio;
+                
+                if (scrollPosition > transparencyThreshold + 50) {
+                    menuList.classList.add('navbar-transparent');
+                } else {
+                    menuList.classList.remove('navbar-transparent');
+                }
+            }
         }
     });
 }); 

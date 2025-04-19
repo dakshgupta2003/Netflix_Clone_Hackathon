@@ -111,6 +111,7 @@ nav{
     color: white;
     display: flex;
     justify-content: center;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
 }
 
 .menuList{
@@ -124,6 +125,7 @@ nav{
     box-shadow: 2px 3px 14px rgba(0, 0, 0, .5);
     backdrop-filter: blur(7px);
     height: 7vh;
+    transition: background-color 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
 }
 
 .menuList li{
@@ -972,4 +974,9 @@ img {
     display: flex;
     justify-content: space-evenly;
     margin: 2rem auto;
+}
+
+.navbar-transparent {
+    background: rgba(0,0,0,.4) !important;
+    box-shadow: 2px 3px 14px rgba(0, 0, 0, .3) !important;
 }
