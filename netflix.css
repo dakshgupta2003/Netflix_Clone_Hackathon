@@ -365,6 +365,8 @@ nav{
 .faqCard{
     /* border: 2px solid red; */
     width: 100%;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
 }
 
 .faqQuestion,
@@ -372,8 +374,9 @@ nav{
     padding: 2rem;
     border-radius: 10px;
     /* border: 1px solid white; */
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     background-color: #2e2e2e;
+    transition: all 0.3s ease;
 }
 
 .faqQuestion{
@@ -385,20 +388,38 @@ nav{
 .faqQuestion span{
     font-size: 2rem;
     font-weight: 900;
+    transition: transform 0.3s ease;
 }
+
 .faqAnswer {
     display: none;
-
+    transform-origin: top;
+    transform: scaleY(0);
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
 }
 
 .faqCard:hover{
     cursor: pointer;
 }
 
-/* Jab faqQuestion p hover ho toh faqAnswer dikh jaye */
-.faqCard:hover .faqAnswer {
+.faqCard:hover .faqQuestion {
+    background-color: #3a3a3a;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Active state classes - will be toggled with JavaScript */
+.faqCard.active .faqAnswer {
     display: block;
-    cursor: pointer;
+    transform: scaleY(1);
+    opacity: 1;
+    height: auto;
+    padding: 2rem;
+}
+
+.faqCard.active .faqQuestionSpan {
+    transform: rotate(45deg);
 }
 
 .faqCardsContainer{
