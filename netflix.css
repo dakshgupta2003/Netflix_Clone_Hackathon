@@ -189,7 +189,7 @@ nav{
     width: 50%;
     display: flex;
     justify-content: center;
-    gap: ;
+    gap: 10px;
 }
 
 .emailInputBox{
@@ -402,5 +402,5 @@ nav{
 }
 
 .getStartedSection p{
-    margin-bottom: 1rem
+    margin-bottom: 1rem;
 }
