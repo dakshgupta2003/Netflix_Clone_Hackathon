@@ -292,7 +292,13 @@ nav{
     padding: 2rem 1rem 1rem;
     border-radius: 20px;
     border: 2px solid rgba(255, 255, 255, 0.372);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
+.planCard:hover, .reasonCard:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+    cursor: pointer;
 }
 
 .planCard1{
@@ -328,6 +334,12 @@ nav{
     background: rgb(47, 47, 47);
     border: none;
     height: 33vh;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reasonCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
 }
 
 .reasonCard h2{
