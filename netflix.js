@@ -232,4 +232,169 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+    
+    // Movie search functionality
+    const searchInput = document.getElementById('movieSearch');
+    const searchButton = document.querySelector('.searchButton');
+    const searchResults = document.getElementById('searchResults');
+    
+    // Sample movie data based on the carousel images
+    const movies = [
+        { id: 1, title: 'Pushpa 2', image: './c1.png', genre: 'Action/Drama' },
+        { id: 2, title: 'Vidaamuyarchi', image: './c2.png', genre: 'Thriller' },
+        { id: 3, title: 'Squid Game', image: './c3.png', genre: 'Drama/Thriller' },
+        { id: 4, title: 'Thandel', image: './c4.png', genre: 'Action/Adventure' },
+        { id: 5, title: 'Nadaaniyaan', image: './c5.png', genre: 'Romance' },
+        { id: 6, title: 'Daaku Maharaaj', image: './c6.png', genre: 'Action/Crime' }
+    ];
+    
+    // Function to perform search
+    function performSearch() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        const searchButton = document.querySelector('.searchButton');
+        
+        // Clear previous results
+        searchResults.innerHTML = '';
+        
+        // Reset search button state
+        searchButton.classList.remove('found');
+        
+        if (searchTerm === '') {
+            searchResults.classList.remove('active');
+            return;
+        }
+        
+        // Filter movies by search term
+        const filteredMovies = movies.filter(movie => 
+            movie.title.toLowerCase().includes(searchTerm) ||
+            movie.genre.toLowerCase().includes(searchTerm)
+        );
+        
+        if (filteredMovies.length > 0) {
+            // Movie found - show green tick
+            searchButton.classList.add('found');
+            
+            // Display search results
+            filteredMovies.forEach(movie => {
+                const resultItem = document.createElement('div');
+                resultItem.className = 'searchResultItem';
+                resultItem.innerHTML = `
+                    <img src="${movie.image}" alt="${movie.title}">
+                    <div class="movieInfo">
+                        <div class="movieTitle">${movie.title}</div>
+                        <div class="movieGenre">${movie.genre}</div>
+                    </div>
+                `;
+                
+                // Add click event to scroll to the movie
+                resultItem.addEventListener('click', () => {
+                    // Find the movie card
+                    const movieCards = document.querySelectorAll('.carouselCard');
+                    const targetCard = movieCards[movie.id - 1]; // ID is 1-based, array is 0-based
+                    
+                    if (targetCard) {
+                        // Calculate position and scroll to movie
+                        const container = document.querySelector('.carouselCardConatiner');
+                        const containerRect = container.getBoundingClientRect();
+                        const cardRect = targetCard.getBoundingClientRect();
+                        const scrollLeft = container.scrollLeft + (cardRect.left - containerRect.left) - 50;
+                        
+                        container.scrollTo({
+                            left: scrollLeft,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Highlight the found movie
+                        targetCard.style.transform = 'scale(1.1)';
+                        targetCard.style.boxShadow = '0 0 20px rgba(229, 9, 20, 0.6)';
+                        
+                        setTimeout(() => {
+                            targetCard.style.transform = '';
+                            targetCard.style.boxShadow = '';
+                        }, 2000);
+                        
+                        // Close search results
+                        searchResults.classList.remove('active');
+                    }
+                });
+                
+                searchResults.appendChild(resultItem);
+            });
+        } else {
+            // No results found - keep original search icon
+            searchButton.classList.remove('found');
+            
+            // No results found
+            const noResults = document.createElement('div');
+            noResults.className = 'noResults';
+            noResults.textContent = 'No movies found matching your search.';
+            searchResults.appendChild(noResults);
+        }
+        
+        // Show results
+        searchResults.classList.add('active');
+    }
+    
+    // Event listeners for search
+    searchButton.addEventListener('click', performSearch);
+    
+    searchInput.addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            performSearch();
+        } else if (searchInput.value.trim() === '') {
+            searchResults.classList.remove('active');
+            // Reset search button if input is cleared
+            document.querySelector('.searchButton').classList.remove('found');
+        } else {
+            // Auto-search as user types (optional, can be removed if not wanted)
+            performSearch();
+        }
+    });
+    
+    // Close search results when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!searchInput.contains(event.target) && 
+            !searchButton.contains(event.target) && 
+            !searchResults.contains(event.target)) {
+            searchResults.classList.remove('active');
+        }
+    });
+    
+    // Language dropdown functionality
+    const languageDropdown = document.querySelector('.language-dropdown');
+    const languageButton = document.querySelector('.languageButton');
+    const dropdownItems = document.querySelectorAll('.dropdown-item');
+
+    if (languageDropdown && languageButton) {
+        // Toggle dropdown on button click
+        languageButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            languageDropdown.classList.toggle('open');
+        });
+        
+        // Close dropdown when clicking elsewhere
+        document.addEventListener('click', (event) => {
+            if (!languageDropdown.contains(event.target)) {
+                languageDropdown.classList.remove('open');
+            }
+        });
+        
+        // Handle language selection
+        dropdownItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const lang = item.dataset.lang;
+                const langText = item.textContent;
+                
+                // Update button text
+                languageButton.querySelector('p').textContent = langText;
+                
+                // Update active class
+                dropdownItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                
+                // Close dropdown
+                languageDropdown.classList.remove('open');
+            });
+        });
+    }
 }); 
