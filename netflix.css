@@ -33,6 +33,8 @@ body{
     top: 0;
     background-color: rgba(0, 0, 0, .5);
     padding: 0rem 2rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 nav{
@@ -46,6 +48,7 @@ nav{
     /* border: 2px solid blue; */
     display: flex;
     height: 50%;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .upperNavbarLeftSection{
@@ -274,12 +277,16 @@ nav{
 .carouselImageContainer{
     width: 100%;
     height: 100%;
+    overflow: hidden;
+    border-radius: 20px;
 }
 
 .carouselImageContainer img{
     width: 100%;
     height: 100%;
     border-radius: 20px;
+    object-fit: cover;
+    object-position: center;
 }
 
 .planCard, .reasonCard{
@@ -436,4 +443,435 @@ nav{
 
 .getStartedSection p{
     margin-bottom: 1rem;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+    .bannerContainer h2 {
+        font-size: 3rem;
+        width: 70%;
+    }
+    
+    .menuList {
+        width: 60%;
+    }
+    
+    .inputContainer {
+        width: 70%;
+    }
+    
+    .carouselCardConatiner {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    
+    .carouselCard {
+        width: 25%;
+        height: 30vh;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .menuList {
+        width: 80%;
+    }
+    
+    .bannerContainer h2 {
+        font-size: 2.5rem;
+        width: 80%;
+    }
+    
+    .bannerContainer h4 {
+        font-size: 1.3rem;
+    }
+    
+    .inputContainer {
+        width: 80%;
+    }
+    
+    .plansConatiner {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    
+    .planCard, .reasonCard {
+        width: 45%;
+        margin-bottom: 20px;
+    }
+    
+    .carouselCard {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    nav {
+        height: auto;
+        padding: 10px 0;
+    }
+    
+    .upperNavbarSection {
+        height: auto;
+        padding: 10px 0;
+    }
+    
+    .netflixLogo {
+        width: 40%;
+    }
+    
+    .lowerNavbarSection {
+        height: auto;
+        margin-top: 10px;
+    }
+    
+    .menuList {
+        width: 100%;
+        padding: 10px 0;
+    }
+    
+    .menuList li {
+        font-size: 0.9rem;
+    }
+    
+    .sectionsContainer {
+        margin-top: 30vh;
+    }
+    
+    .bannerSection {
+        height: 70vh;
+        background-position: center;
+        background-size: cover;
+    }
+    
+    .bannerContainer {
+        padding: 0 15px;
+    }
+    
+    .bannerContainer h2 {
+        font-size: 2rem;
+        width: 90%;
+    }
+    
+    .inputContainer {
+        width: 90%;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .emailInputBox {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .getStartedButton {
+        width: 100%;
+        padding: 1rem 0;
+    }
+    
+    .reasonToJoinSection h2,
+    .planSection h2,
+    .carouselSection h2,
+    .faqSection h2 {
+        text-align: center;
+        margin-left: 0;
+    }
+    
+    .carouselCard {
+        width: 45%;
+        margin-bottom: 30px;
+        height: 40vw;
+        max-height: 300px;
+    }
+    
+    .carouselCardConatiner,
+    .plansConatiner,
+    .reasonsConatiner {
+        width: 95%;
+    }
+    
+    .plansConatiner {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .planCard, .reasonCard {
+        width: 90%;
+        height: auto;
+        min-height: 25vh;
+    }
+    
+    .reasonsConatiner {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .mobileMenuToggle {
+        display: block;
+    }
+    
+    .mobileMenu.active {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .contentContainer {
+        padding: 0rem 1rem;
+    }
+    
+    .navBarButtonContainer {
+        padding-right: 1rem;
+    }
+    
+    .upperNavbarLeftSection,
+    .upperNavbarRightSection {
+        width: auto;
+    }
+    
+    .upperNavbarSection {
+        justify-content: space-between;
+    }
+    
+    .netflixLogo {
+        width: 100px;
+    }
+    
+    .languageButton {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+    }
+    
+    .signinButton {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+    }
+    
+    .lowerNavbarSection {
+        display: none; /* Hide menu on very small screens */
+    }
+    
+    .sectionsContainer {
+        margin-top: 15vh;
+    }
+    
+    .bannerContainer h2 {
+        font-size: 1.8rem;
+    }
+    
+    .bannerContainer h4 {
+        font-size: 1.1rem;
+    }
+    
+    .bannerContainer p {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+    
+    .bannerSection {
+        height: 60vh;
+    }
+    
+    .carouselCard {
+        width: 80%;
+        height: 45vw;
+        max-height: 220px;
+        margin: 0 auto 30px;
+    }
+    
+    .carouselNumberContainer {
+        left: -10px;
+    }
+    
+    .carouselNumberContainer span {
+        font-size: 3rem;
+    }
+    
+    .faqQuestion {
+        padding: 1.5rem;
+    }
+    
+    .faqQuestion p {
+        font-size: 0.85rem;
+        width: 85%;
+        line-height: 1.4;
+    }
+    
+    .faqQuestion span {
+        font-size: 1.5rem;
+    }
+    
+    .faqCard.active .faqAnswer {
+        padding: 1.5rem;
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+    
+    .reasonsConatiner {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .planCard, .reasonCard {
+        width: 90%;
+        height: auto;
+        min-height: 22vh;
+        padding: 1.5rem 1rem 1rem;
+    }
+    
+    .planCard h2 {
+        font-size: 1.3rem;
+    }
+    
+    .planCard h4 {
+        font-size: 1.1rem;
+    }
+    
+    .planCard p {
+        font-size: 0.9rem;
+    }
+    
+    .mobileMenuToggle {
+        order: 3;
+    }
+    
+    .navBarButtonContainer {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .getStartedButton {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+/* Mobile Menu Styles */
+.mobileMenuToggle {
+    display: none;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.menu-icon {
+    width: 30px;
+    height: 22px;
+    position: relative;
+}
+
+.menu-icon span {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.menu-icon span:nth-child(1) {
+    top: 0;
+}
+
+.menu-icon span:nth-child(2) {
+    top: 10px;
+}
+
+.menu-icon span:nth-child(3) {
+    top: 20px;
+}
+
+.mobileMenu {
+    display: none;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+}
+
+.mobileMenu.active {
+    transform: translateY(0);
+}
+
+.mobileMenuList {
+    list-style: none;
+    padding: 20px;
+}
+
+.mobileMenuListItems {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobileMenuListItems a {
+    color: white;
+    font-size: 1.1rem;
+    display: block;
+}
+
+/* Ensure images are fully responsive */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Fix for iPhones and very small screens */
+@media screen and (max-width: 375px) {
+    .netflixLogo {
+        width: 80px;
+    }
+    
+    .languageButton,
+    .signinButton {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+    }
+    
+    .bannerContainer h2 {
+        font-size: 1.5rem;
+    }
+    
+    .bannerContainer h4 {
+        font-size: 1rem;
+    }
+    
+    .bannerContainer p {
+        font-size: 0.8rem;
+    }
+    
+    .carouselCard {
+        width: 75%;
+        height: 42vw;
+        max-height: 180px;
+    }
+
+    
+    .getStartedButton {
+        width: 100%;
+        padding: 0.8rem;
+    }
+    
+    .faqQuestion {
+        padding: 1rem;
+    }
+    
+    .faqAnswer {
+        padding: 1rem !important;
+    }
+}
+
+.navbar-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.navbar-hidden {
+    opacity: 0;
+    transform: translateY(-100%);
 }
