@@ -48,6 +48,7 @@ nav{
     /* border: 2px solid blue; */
     display: flex;
     height: 50%;
+    justify-content: space-between;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
@@ -629,6 +630,8 @@ nav{
     .upperNavbarSection {
         height: auto;
         padding: 10px 0;
+        justify-content: space-between;
+        align-items: center;
     }
     
     .netflixLogo {
@@ -739,6 +742,19 @@ nav{
     .mobileMenu.active {
         display: block;
     }
+    
+    .languageButton,
+    .signinButton {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .languageButton p {
+        max-width: 60px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
 
 @media screen and (max-width: 576px) {
@@ -747,30 +763,36 @@ nav{
     }
     
     .navBarButtonContainer {
-        padding-right: 1rem;
+        padding-right: 0;
     }
     
     .upperNavbarLeftSection,
     .upperNavbarRightSection {
         width: auto;
+        display: flex;
+        align-items: center;
     }
     
     .upperNavbarSection {
         justify-content: space-between;
+        padding: 10px 0;
     }
     
     .netflixLogo {
         width: 100px;
     }
     
-    .languageButton {
-        padding: 0.3rem 0.6rem;
-        font-size: 0.8rem;
-    }
-    
+    .languageButton,
     .signinButton {
         padding: 0.3rem 0.6rem;
         font-size: 0.8rem;
+        height: 32px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .languageButton p {
+        max-width: 50px;
     }
     
     .lowerNavbarSection {
@@ -963,6 +985,11 @@ img {
     .signinButton {
         font-size: 0.7rem;
         padding: 0.2rem 0.5rem;
+        height: 28px;
+    }
+    
+    .languageButton p {
+        max-width: 40px;
     }
     
     .bannerContainer h2 {
