@@ -50,6 +50,7 @@ nav{
 
 .upperNavbarLeftSection{
     /* border: 2px solid red; */
+    padding-top: 1rem;
     width: 50%;
 
 }
@@ -60,6 +61,7 @@ nav{
 
 .upperNavbarRightSection{
     /* border: 2px solid green; */
+    padding-top: 1rem;
     width: 50%;
 }
 
@@ -187,7 +189,7 @@ nav{
     width: 50%;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: ;
 }
 
 .emailInputBox{
